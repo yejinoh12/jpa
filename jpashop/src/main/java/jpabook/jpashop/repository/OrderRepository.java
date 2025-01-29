@@ -67,5 +67,18 @@ public class OrderRepository {
                         "join fetch o.delivery d", Order.class)
                 .getResultList();
     }
+
+
+    //distinct 추가
+    //데이터 베이스는 한 줄 이 모두 동일해야 distinct 적용됨
+    //db에서는 적용되지 않지만 jpa에서 orderid 가 동일값이면 제거해줌
+    public List<Order> findAllWithItem() {
+        return em.createQuery("select distinct o from Order o" +
+                        " join fetch o.member m " +
+                        " join fetch o.delivery d" +
+                        " join fetch o.orderItems oi " +
+                        " join fetch oi.item i", Order.class)
+                .getResultList();
+    }
 }
 

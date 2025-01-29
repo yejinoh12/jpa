@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 
 //오더 -> 맴버
 //오더 -> 배송
-//ManyToOne, OneToOne 성능 최적화
+//ManyToOne, OneToOne 성능 최적화 --> 결론 패치조인
 @RestController
 @RequiredArgsConstructor
 public class OrderSimpleApiController {
